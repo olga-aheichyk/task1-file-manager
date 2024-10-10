@@ -1,0 +1,12 @@
+{
+  "name": "task1-file-manager",
+  "version": "1.0.0",
+  "description": "Repo for Node.js learning at RS School Node.js Course",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
