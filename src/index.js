@@ -37,7 +37,7 @@ rl.on("line", async (input) => {
     closeFileManager();
   }
 
-  handleUserInput(command);
+  await handleUserInput(command);
   printWorkingDirectory();
   rl.prompt();
 });
