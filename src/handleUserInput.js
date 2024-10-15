@@ -1,13 +1,14 @@
 import { goToDirectory, goUp, printListOfFilesAndDirectories } from './operationHandlers/navigationHandlers.js';
-import { FS_OPERATIONS, NAVIGATION_OPERATIONS } from './constants/operations.js';
+import { FS_OPERATIONS, NAVIGATION_OPERATIONS, ZIP_OPERATIONS } from './constants/operations.js';
 import { invalidInputText } from './constants/messageTexts.js';
 import { copyFile, createEmptyFile, deleteFile, moveFile, readFile, renameFile } from './operationHandlers/fsOperationsHandlers.js';
+import { compressFile, decompressFile } from './operationHandlers/zipOperationsHandlers.js';
 
 
 export const handleUserInput = async (command) => {
-	const [operation, ...args] = command.split(" ");
+  const [operation, ...args] = command.split(" ");
 
-	switch (operation) {
+  switch (operation) {
     case NAVIGATION_OPERATIONS.UP:
       goUp();
       break;
@@ -42,6 +43,14 @@ export const handleUserInput = async (command) => {
 
     case FS_OPERATIONS.RM:
       await deleteFile(args[0]);
+      break;
+
+    case ZIP_OPERATIONS.COMPRESS:
+      await compressFile(args[0], args[1]);
+      break;
+
+    case ZIP_OPERATIONS.DECOMPRESS:
+      await decompressFile(args[0], args[1]);
       break;
 
     default:
